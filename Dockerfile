@@ -8,9 +8,9 @@ COPY --from=node /usr/local/lib/node_modules/ /usr/local/lib/node_modules/
 
 ## npm, npx, yarnコマンドを実行できるように関連付ける
 RUN ln -fs /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
-  && ln -fs /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npx \
-  && ln -fs /opt/yarn/bin/yarn /usr/local/bin/yarn \
-  && ln -fs /opt/yarn/bin/yarnpkg /usr/local/bin/yarnpkg
+    && ln -fs /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npx \
+    && ln -fs /opt/yarn/bin/yarn /usr/local/bin/yarn \
+    && ln -fs /opt/yarn/bin/yarnpkg /usr/local/bin/yarnpkg
 
 # 必要なパッケージをインストールする
 RUN apt-get update -qq \
