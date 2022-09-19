@@ -15,12 +15,21 @@ module Myapp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
+    # INFO: 以下のファイルがgeneratorコマンドで自動生成されないようにする。
+    # - asset関連ファイル
+    # - ルーティング
+    # - view_helper関連ファイル
+    # - test用のfixtureはつくられないようにする
+    config.generators do |g|
+      g.assets false
+      g.skip_routes true
+      g.helper false
+      g.test_framework :test_unit, fixture: false
+    end
+
+    # TimeZoneを日本時間に修正
+    config.time_zone = "Tokyo"
+
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
