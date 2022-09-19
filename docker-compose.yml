@@ -19,6 +19,34 @@ services:
       - "3000:3000"
     depends_on:
       - database
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: webpack-dev-server
+  tailwindcss-watch:
+    # tailwindcss-railsを開発環境で使用する場合に必要なclassのみを抽出するプロセスを立ち上げるためのコンテナ
+    # @ref https://github.com/rails/tailwindcss-rails#update-assets-automatically
+    image:
+      sharing_economy_web:latest
+    volumes:
+      - .:/myapp
+      - bundle:/usr/local/bundle
+      - node_modules:/myapp/node_modules
+    command: ["rails", "tailwindcss:watch"]
+    tty: true
+  webpack-dev-server:
+    # javascript, cssコンパイルをRailsのプロセスとは別に行うコンテナ
+    image: sharing_economy_web:latest
+    volumes:
+      - .:/myapp
+      - bundle:/usr/local/bundle
+      - node_modules:/myapp/node_modules
+    environment:
+      NODE_ENV: development
+      RAILS_ENV: development
+      WEBPACKER_DEV_SERVER_HORT: 0.0.0.0
+      NODE_OPTIONS: --openssl-legacy-provider
+    command: ./bin/webpack-dev-server
+    ports:
+      - "3035:3035"
 volumes:
   bundle:
   node_modules:
