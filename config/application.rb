@@ -30,6 +30,8 @@ module Myapp
     # TimeZoneを日本時間に修正
     config.time_zone = "Tokyo"
 
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   enum gender: { unanswered: 0, make: 1, female: 2 }
 
   validates :nickname, presence: true
-  validates :gender, presence: true, inclusion: { in: User.genders.keys }
+  validates :gender, presence: true
 
   class << self
     def genders_i18n
