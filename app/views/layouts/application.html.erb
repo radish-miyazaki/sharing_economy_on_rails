@@ -14,7 +14,6 @@
   <body>
     <%= render partial: 'shared/header' %>
 
-    <% flash[:notice] = "noticeメッセージ" %>
     <% if flash[:notice] %>
       <div class="mt-20 bg-blue-100 border-t border-blue-500 text-blue-700 px-4 py-3" role="alert">
         <p class="text-sm">
@@ -23,7 +22,6 @@
       </div>
     <% end %>
 
-    <% flash[:alert] = "alertメッセージ" %>
     <% if flash[:alert] %>
       <div class="mt-20 bg-blue-100 border-t border-red-100 text-red-700 px-4 py-3" role="alert">
         <p class="text-sm">
