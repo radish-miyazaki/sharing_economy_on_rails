@@ -4,7 +4,7 @@
       メールアドレス確認メール送信
     </h1>
     <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: post }) do |f| %>
-      <%= render 'users/shared/error_messages', resource: resource %>
+      <%= render 'shared/error_messages', resource: resource %>
       <div class="text-left">
         <div class="mb-8">
           <%= f.label :email, class: 'block text-grey-500 text-sm font-bold mb-2' %>

@@ -4,8 +4,13 @@ class User < ApplicationRecord
 
   enum gender: { unanswered: 0, make: 1, female: 2 }
 
+  # INFO: ユーザ新規登録時のメールアドレス確認をスキップ
+  before_validation :skip_confirmation!, if: :new_record?
+
   validates :nickname, presence: true
   validates :gender, presence: true
+
+  has_one :user_information, dependent: :destroy
 
   class << self
     def genders_i18n
