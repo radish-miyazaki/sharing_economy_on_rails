@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :gender, presence: true
 
   has_one :user_information, dependent: :destroy
+  has_one :user_mobile_phone, dependent: :destroy
 
   class << self
     def genders_i18n
