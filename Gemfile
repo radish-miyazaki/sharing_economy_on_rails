@@ -18,6 +18,7 @@ gem 'devise'
 # gem 'image_processing', '~> 1.2'
 
 gem 'net-smtp'
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
