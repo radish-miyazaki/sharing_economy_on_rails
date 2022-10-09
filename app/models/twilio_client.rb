@@ -8,7 +8,7 @@ class TwilioClient
 
   def send_auth_code_to_sms(to:, auth_code:)
     client.messages.create(
-      form: ENV['TWILIO_PHONE_NUMBER'],
+      from: ENV['TWILIO_PHONE_NUMBER'],
       to: "+81#{to}",
       body: make_body(auth_code)
     )
