@@ -17,5 +17,9 @@ class User < ApplicationRecord
     def genders_i18n
       I18n.t('enums.user.gender')
     end
+
+    def remember_me
+      true
+    end
   end
 end
